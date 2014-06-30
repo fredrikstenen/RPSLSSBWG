@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.game.PlayerTwoActivity$PlaceholderFragment" >
+
+    <ImageButton
+        android:id="@+id/batman_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="46dp"
+        android:src="@drawable/batman_button"
+        android:onClick="goToResult" />
+
+    <ImageButton
+        android:id="@+id/glock_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/batman_button"
+        android:layout_below="@+id/batman_button"
+        android:layout_marginTop="46dp"
+        android:src="@drawable/glock_button"
+        android:onClick="goToResult" />
+
+    <TextView
+        android:id="@+id/player_two_headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/player_two_headline"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <ImageButton
+        android:id="@+id/rock_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/batman_button"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/rock_button"
+        android:onClick="goToResult" />
+
+    <ImageButton
+        android:id="@+id/scissors_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/rock_button"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/rock_button"
+        android:src="@drawable/scissors_button"
+        android:onClick="goToResult" />
+
+    <ImageButton
+        android:id="@+id/spock_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/scissors_button"
+        android:layout_alignTop="@+id/glock_button"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/spock_button"
+        android:onClick="goToResult" />
+
+    <ImageButton
+        android:id="@+id/lizard_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/glock_button"
+        android:layout_below="@+id/glock_button"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="57dp"
+        android:src="@drawable/lizard_button"
+        android:onClick="goToResult" />
+
+    <ImageButton
+        android:id="@+id/paper_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spock_button"
+        android:layout_alignTop="@+id/lizard_button"
+        android:src="@drawable/paper_button"
+        android:onClick="goToResult" />
+
+    <ImageButton
+        android:id="@+id/spiderman_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lizard_button"
+        android:layout_marginTop="28dp"
+        android:layout_toLeftOf="@+id/lizard_button"
+        android:src="@drawable/spiderman_button"
+        android:onClick="goToResult" />
+
+    <ImageButton
+        android:id="@+id/wizard_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/spiderman_button"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/wizard_button"
+        android:onClick="goToResult" />
+    
+
+</RelativeLayout>
