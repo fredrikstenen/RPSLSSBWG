@@ -2,14 +2,34 @@
 <resources>
 
     <string name="app_name">Game</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="welcome_text">Welcome to Rock, Paper, Scissors, Lizard, Spock, Spider-Man, Batman, Wizard, Glock</string>
-    <string name="play_button">Play new game!</string>
+    <string name="welcome_text">Welcome to Rock, Paper, Scissors, Lizard, Spock, Spider-Man, Batman, Wizard, Glock.</string>
+    <string name="play_button">New game. One phone.</string>
+    <string name="menu_button">Go to main menu</string>
+    <string name="play_again_button">Play next round</string>
+    <string name="play_multi_button">New game. Multiplayer.</string>
+    <string name="play_1_button">First to one</string>
+    <string name="play_3_button">First to three</string>
+    <string name="play_5_button">First to five</string>
+    <string name="play_10_button">First to ten</string>
+    <string name="player1_result">Player 1</string>
+    <string name="draws_result">Draws</string>
+    <string name="player2_result">Player 2</string>
     <string name="title_activity_player_one">Player One</string>
     <string name="player_one_headline">Player One, choose a sign:</string>
     <string name="title_activity_player_two">Player Two</string>
     <string name="player_two_headline">Player Two, choose a sign:</string>
     <string name="title_activity_show_result">Result</string>
+    <string name="rock_button">Rock</string>
+    <string name="paper_button">Paper</string>
+    <string name="scissors_button">Scissors</string>
+    <string name="lizard_button">Lizard</string>
+    <string name="spock_button">Spock</string>
+    <string name="spiderman_button">Spider-Man</string>
+    <string name="batman_button">Batman</string>
+    <string name="wizard_button">Wizard</string>
+    <string name="glock_button">Glock</string>
+    <string name="title_activity_winner">WinnerActivity</string>
+    <string name="winner_example">PLAYER XXX\n IS THE WINNER!</string>
 
 </resources>

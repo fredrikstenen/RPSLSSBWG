@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,20 +19,60 @@ public class ShowResultActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+		setContentView(R.layout.fragment_show_result);
 		Bundle extras = getIntent().getExtras();
 		int i = extras.getInt("playerOneChoice");
 		int j = extras.getInt("playerTwoChoice");
-	    String winner = Play.chooseSign(i,j);
-		TextView textView = new TextView(this);
-	    textView.setTextSize(40);
-	    textView.setText(winner);
-	    setContentView(textView);
+		int k = extras.getInt("gameMode");
+		Game game = new Game(i,j,k);
+	    String winner = game.play();
+	    lookForWinner(k, game);
+	    String p1R = Integer.toString(game.getP1W());
+	    String draws = Integer.toString(game.getDraws());
+	    String p2R = Integer.toString(game.getP2W());
+		TextView resultView = (TextView) findViewById(R.id.result_view);
+	    resultView.setText(winner);
+	    TextView player1Result = (TextView) findViewById(R.id.player1_result);
+	    player1Result.setText(p1R);
+	    TextView drawsResult = (TextView) findViewById(R.id.draws_result);
+	    drawsResult.setText(draws);
+	    TextView player2Result = (TextView) findViewById(R.id.player2_result);
+	    player2Result.setText(p2R);
 		}
-	public String showResult(){
-		Bundle extras = getIntent().getExtras();
-		int i = extras.getInt("playerOneChoice");
-		int j = extras.getInt("playerTwoChoice");
-	    return Play.chooseSign(i,j);
+	public void startNewGame(View view){
+		Intent oldIntent = getIntent();
+		int intValue = oldIntent.getIntExtra("gameMode", 0);
+		Intent intent = new Intent(this, PlayerOneActivity.class);
+		intent.putExtra("gameMode", (int)intValue);
+		startActivity(intent);
+	}
+	public void startMain(View view){
+		Intent intent = new Intent(this, MainActivity.class);
+		Game.resetAll();
+		startActivity(intent);
+	}
+	public void lookForWinner(int k, Game game){
+		if(k==game.getP1W()){
+			Intent intent = new Intent(this, WinnerActivity.class);
+			intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
+			intent.putExtra("p1R", Integer.toString(game.getP1W()));
+			intent.putExtra("draws", Integer.toString(game.getDraws()));
+			intent.putExtra("p2R", Integer.toString(game.getP2W()));
+			intent.putExtra("phrase", game.play());
+			startActivity(intent);
+			ShowResultActivity.this.finish();
+	   	}
+	    else if(k == game.getP2W()){
+	    	Intent intent = new Intent(this, WinnerActivity.class);
+	    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
+			intent.putExtra("p1R", Integer.toString(game.getP1W()));
+			intent.putExtra("draws", Integer.toString(game.getDraws()));
+			intent.putExtra("p2R", Integer.toString(game.getP2W()));
+			intent.putExtra("phrase", game.play());
+			startActivity(intent);
+			ShowResultActivity.this.finish();
+	    }
 	}
 
 	@Override

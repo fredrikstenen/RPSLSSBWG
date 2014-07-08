@@ -17,6 +17,7 @@ public class PlayerOneActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 		setContentView(R.layout.activity_player_one);
 
 		if (savedInstanceState == null) {
@@ -25,37 +26,41 @@ public class PlayerOneActivity extends ActionBarActivity {
 		}
 	}
 	public void goToPlayerTwo(View view){
-        Intent oldIntent = new Intent(this, PlayerTwoActivity.class);
+		Intent oldIntent = getIntent();
+		int intValue = oldIntent.getIntExtra("gameMode", 0);
+        Intent intent = new Intent(this, PlayerTwoActivity.class);
+        intent.putExtra("gameMode", intValue);
         switch (view.getId()) {
         case (R.id.rock_button):
-        	oldIntent.putExtra("playerOneChoice", 1);
+        	intent.putExtra("playerOneChoice", 1);
         break;
         case (R.id.paper_button):
-        	oldIntent.putExtra("playerOneChoice", 2);
+        	intent.putExtra("playerOneChoice", 2);
         break;
         case (R.id.scissors_button):
-        	oldIntent.putExtra("playerOneChoice", 3);
+        	intent.putExtra("playerOneChoice", 3);
         break;
         case (R.id.lizard_button):
-        	oldIntent.putExtra("playerOneChoice", 4);
+        	intent.putExtra("playerOneChoice", 4);
         break;
         case (R.id.spock_button):
-        	oldIntent.putExtra("playerOneChoice", 5);
+        	intent.putExtra("playerOneChoice", 5);
         break;
         case (R.id.spiderman_button):
-        	oldIntent.putExtra("playerOneChoice", 6);
+        	intent.putExtra("playerOneChoice", 6);
         break;
         case (R.id.batman_button):
-        	oldIntent.putExtra("playerOneChoice", 7);
+        	intent.putExtra("playerOneChoice", 7);
         break;
         case (R.id.wizard_button):
-        	oldIntent.putExtra("playerOneChoice", 8);
+        	intent.putExtra("playerOneChoice", 8);
         break;
         case (R.id.glock_button):
-        	oldIntent.putExtra("playerOneChoice", 9);
+        	intent.putExtra("playerOneChoice", 9);
         break;
         }
-        startActivity(oldIntent);
+        startActivity(intent);
+        PlayerOneActivity.this.finish();
 	}
 
 	@Override

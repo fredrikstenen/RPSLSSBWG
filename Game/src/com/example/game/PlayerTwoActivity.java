@@ -26,39 +26,42 @@ public class PlayerTwoActivity extends ActionBarActivity {
 	}
 	public void goToResult(View view){
 		Intent oldIntent = getIntent();
-		int intValue = oldIntent.getIntExtra("playerOneChoice", 0);
-		Intent myIntent = new Intent(this, ShowResultActivity.class);
-		myIntent.putExtra("playerOneChoice", (int)intValue);
+		int intValue1 = oldIntent.getIntExtra("gameMode", 0);
+		int intValue2 = oldIntent.getIntExtra("playerOneChoice", 0);
+		Intent intent = new Intent(this, ShowResultActivity.class);
+		intent.putExtra("gameMode", (int)intValue1);
+		intent.putExtra("playerOneChoice", (int)intValue2);
 		switch (view.getId()){
 		case (R.id.rock_button):
-			myIntent.putExtra("playerTwoChoice", (int)1);
+			intent.putExtra("playerTwoChoice", (int)1);
         break;
         case (R.id.paper_button):
-        	myIntent.putExtra("playerTwoChoice", (int)2);
+        	intent.putExtra("playerTwoChoice", (int)2);
         break;
         case (R.id.scissors_button):
-        	myIntent.putExtra("playerTwoChoice", (int)3);
+        	intent.putExtra("playerTwoChoice", (int)3);
         break;
         case (R.id.lizard_button):
-        	myIntent.putExtra("playerTwoChoice", (int)4);
+        	intent.putExtra("playerTwoChoice", (int)4);
         break;
         case (R.id.spock_button):
-        	myIntent.putExtra("playerTwoChoice", (int)5);
+        	intent.putExtra("playerTwoChoice", (int)5);
         break;
         case (R.id.spiderman_button):
-        	myIntent.putExtra("playerTwoChoice", (int)6);
+        	intent.putExtra("playerTwoChoice", (int)6);
         break;
         case (R.id.batman_button):
-        	myIntent.putExtra("playerTwoChoice", (int)7);
+        	intent.putExtra("playerTwoChoice", (int)7);
         break;
         case (R.id.wizard_button):
-        	myIntent.putExtra("playerTwoChoice", (int)8);
+        	intent.putExtra("playerTwoChoice", (int)8);
         break;
         case (R.id.glock_button):
-        	myIntent.putExtra("playerTwoChoice", (int)9);
+        	intent.putExtra("playerTwoChoice", (int)9);
         break;
 		}
-		startActivity(myIntent);
+		startActivity(intent);
+		PlayerTwoActivity.this.finish();
 		
 	}
 

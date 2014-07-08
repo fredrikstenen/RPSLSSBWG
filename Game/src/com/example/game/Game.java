@@ -1,7 +1,19 @@
 package com.example.game;
 
-public class Play {
-	public static String chooseSign(int i, int j){
+public class Game {
+	
+	public static int p1w = 0;
+	public static int p2w = 0;
+	public static int draws = 0;
+	public static int noOfGames;
+	public static int gameMode;
+	
+	String[] p1;
+	String[] p2;
+	String[] p1P;
+	String[] p2P;
+	
+	public Game(int i, int j, int k){
 		if (i == 1){
 			p1 = rockList;
 			p1P = rockPhrase;}
@@ -56,9 +68,31 @@ public class Play {
 		if (j == 9){
 			p2 = glockList;
 			p2P = glockPhrase;}
-		return players();
+		gameMode = k;
+		noOfGames++;
 	}
-	public static String players(){
+	public static void resetAll(){
+		p1w = 0;
+		p2w = 0;
+		draws = 0;
+		noOfGames = 0;
+	}
+	public int getP1W(){
+		return p1w;
+	}
+	public int getP2W(){
+		return p2w;
+	}
+	public int getDraws(){
+		return draws;
+	}
+	public int getNoOfGames(){
+		return noOfGames;
+	}
+	public int getGameMode(){
+		return gameMode;
+	}
+	public String play(){
 		int result = 0;
 		String phrase = "";
 		if (!p1[0].equals(p2[0])) {
@@ -66,6 +100,7 @@ public class Play {
 				if (p1[i].equals(p2[0])) {
 					result = 2;
 					phrase = p1P[i];
+					p1w++;
 					break;
 				}
 				else {
@@ -78,20 +113,17 @@ public class Play {
 				if (p2[j].equals(p1[0])) {
 					result = 2;
 					phrase = p2P[j];
+					p2w++;
 					break;
 				}
 			}
 		}
 		if (result == 0) {
 			phrase = "It's a draw";
+			draws++;
 		}
 		return phrase;
 	}
-		
-	static String[] p1;
-	static String[] p2;
-	static String[] p1P;
-	static String[] p2P;
 
 	static String[] rockList = {"rock", "lizard", "wizard", "spider-man", "scissors"};
 	static String[] paperList = {"paper", "rock", "spock", "batman", "glock"};
