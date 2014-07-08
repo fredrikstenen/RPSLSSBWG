@@ -27,9 +27,8 @@ public class PlayerOneActivity extends ActionBarActivity {
 	}
 	public void goToPlayerTwo(View view){
 		Intent oldIntent = getIntent();
-		int intValue = oldIntent.getIntExtra("gameMode", 0);
         Intent intent = new Intent(this, PlayerTwoActivity.class);
-        intent.putExtra("gameMode", intValue);
+        intent.putExtra("gameMode", oldIntent.getIntExtra("gameMode", 0));
         switch (view.getId()) {
         case (R.id.rock_button):
         	intent.putExtra("playerOneChoice", 1);

@@ -26,11 +26,9 @@ public class PlayerTwoActivity extends ActionBarActivity {
 	}
 	public void goToResult(View view){
 		Intent oldIntent = getIntent();
-		int intValue1 = oldIntent.getIntExtra("gameMode", 0);
-		int intValue2 = oldIntent.getIntExtra("playerOneChoice", 0);
 		Intent intent = new Intent(this, ShowResultActivity.class);
-		intent.putExtra("gameMode", (int)intValue1);
-		intent.putExtra("playerOneChoice", (int)intValue2);
+		intent.putExtra("gameMode", oldIntent.getIntExtra("gameMode", 0));
+		intent.putExtra("playerOneChoice", oldIntent.getIntExtra("playerOneChoice", 0));
 		switch (view.getId()){
 		case (R.id.rock_button):
 			intent.putExtra("playerTwoChoice", (int)1);

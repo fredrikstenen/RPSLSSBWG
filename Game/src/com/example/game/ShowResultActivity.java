@@ -28,23 +28,19 @@ public class ShowResultActivity extends ActionBarActivity {
 		Game game = new Game(i,j,k);
 	    String winner = game.play();
 	    lookForWinner(k, game);
-	    String p1R = Integer.toString(game.getP1W());
-	    String draws = Integer.toString(game.getDraws());
-	    String p2R = Integer.toString(game.getP2W());
 		TextView resultView = (TextView) findViewById(R.id.result_view);
 	    resultView.setText(winner);
 	    TextView player1Result = (TextView) findViewById(R.id.player1_result);
-	    player1Result.setText(p1R);
+	    player1Result.setText(Integer.toString(game.getP1W()));
 	    TextView drawsResult = (TextView) findViewById(R.id.draws_result);
-	    drawsResult.setText(draws);
+	    drawsResult.setText(Integer.toString(game.getDraws()));
 	    TextView player2Result = (TextView) findViewById(R.id.player2_result);
-	    player2Result.setText(p2R);
+	    player2Result.setText(Integer.toString(game.getP2W()));
 		}
 	public void startNewGame(View view){
 		Intent oldIntent = getIntent();
-		int intValue = oldIntent.getIntExtra("gameMode", 0);
 		Intent intent = new Intent(this, PlayerOneActivity.class);
-		intent.putExtra("gameMode", (int)intValue);
+		intent.putExtra("gameMode", oldIntent.getIntExtra("gameMode", 0));
 		startActivity(intent);
 	}
 	public void startMain(View view){
