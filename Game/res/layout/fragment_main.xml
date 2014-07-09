@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/play_multi_button"
         style="@style/ButtonText"
-        android:layout_below="@+id/play_button"
+        android:layout_below="@+id/play3_button"
         android:background="@drawable/button_black"
         android:text="@string/play_multi_button"
         android:textSize="20sp" />
@@ -23,6 +23,14 @@
         android:background="@drawable/button_black"
         android:onClick="chooseMode"
         android:text="@string/play_button"
+        android:textSize="20sp" />
+    <Button
+        android:id="@+id/play3_button"
+        style="@style/ButtonText"
+        android:layout_below="@+id/play_button"
+        android:background="@drawable/button_black"
+        android:onClick="chooseMode"
+        android:text="@string/play3_button"
         android:textSize="20sp" />
 
     <Button

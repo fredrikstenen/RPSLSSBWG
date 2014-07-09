@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
+	
+	public static int nrOfPlayers = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,16 @@ public class MainActivity extends ActionBarActivity {
 		findViewById(R.id.play_5_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_10_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_button).setVisibility(View.GONE);
+		findViewById(R.id.play3_button).setVisibility(View.GONE);
 		findViewById(R.id.play_multi_button).setVisibility(View.GONE);
+		switch (view.getId()) {
+        case (R.id.play_button):
+        	nrOfPlayers = 2;
+        break;
+        case (R.id.play3_button):
+        	nrOfPlayers = 3;
+        break;
+		}
 	}
 	public void startNewGame(View view){
 		Intent intent = new Intent(this, PlayerOneActivity.class);

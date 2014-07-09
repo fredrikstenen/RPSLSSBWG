@@ -1,6 +1,6 @@
 package com.example.game;
 
-import com.example.game.ResultThreeActivity.PlaceholderFragment;
+import com.example.game.MainActivity.PlaceholderFragment;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -16,29 +16,29 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.os.Build;
 
-public class ShowResultActivity extends ActionBarActivity {
+public class ResultThreeActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-		setContentView(R.layout.fragment_show_result);
+		setContentView(R.layout.activity_result_three);
 		Bundle extras = getIntent().getExtras();
 		int i = extras.getInt("playerOneChoice");
 		int j = extras.getInt("playerTwoChoice");
+		int a = extras.getInt("playerThreeChoice");
 		int k = extras.getInt("gameMode");
-		Game game = new Game(i,j,k);
-	    String winner = game.play();
+		Game game = new Game(i,j,a,k);
+	    String winner = game.playThree();
 	    lookForWinner(k, game);
-		TextView resultView = (TextView) findViewById(R.id.result_view);
+		TextView resultView = (TextView) findViewById(R.id.result_viewX);
 	    resultView.setText(winner);
-	    TextView player1Result = (TextView) findViewById(R.id.player1_result);
+	    TextView player1Result = (TextView) findViewById(R.id.player1_resultX);
 	    player1Result.setText(Integer.toString(game.getP1W()));
-	    TextView drawsResult = (TextView) findViewById(R.id.draws_result);
-	    drawsResult.setText(Integer.toString(game.getDraws()));
-	    TextView player2Result = (TextView) findViewById(R.id.player2_result);
+	    TextView player2Result = (TextView) findViewById(R.id.player2_resultX);
 	    player2Result.setText(Integer.toString(game.getP2W()));
-	}
+	    TextView player3Result = (TextView) findViewById(R.id.player3_resultX);
+	    player3Result.setText(Integer.toString(game.getP3W()));
+		}
 	public void startNewGame(View view){
 		Intent oldIntent = getIntent();
 		Intent intent = new Intent(this, PlayerOneActivity.class);
@@ -51,33 +51,59 @@ public class ShowResultActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 	public void lookForWinner(int k, Game game){
+		int ingenting = 0;
+		if (k <= game.getP1W()) {
+			ingenting = ingenting + 1;
+		}
+		if (k <= game.getP2W()) {
+			ingenting = ingenting + 1;
+		}
+		if (k <= game.getP3W()) {
+			ingenting = ingenting + 1;
+		}
+		
+		if(ingenting > 1) {
+			
+		} else {
+		
 		if(k==game.getP1W()){
 			Intent intent = new Intent(this, WinnerActivity.class);
 			intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
 			intent.putExtra("p1R", Integer.toString(game.getP1W()));
-			intent.putExtra("draws", Integer.toString(game.getDraws()));
 			intent.putExtra("p2R", Integer.toString(game.getP2W()));
-			intent.putExtra("phrase", game.play());
+			intent.putExtra("p3R", Integer.toString(game.getP3W()));
+			intent.putExtra("phrase", game.playThree());
 			startActivity(intent);
-			ShowResultActivity.this.finish();
+			ResultThreeActivity.this.finish();
 	   	}
 	    else if(k == game.getP2W()){
 	    	Intent intent = new Intent(this, WinnerActivity.class);
 	    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
-			intent.putExtra("p1R", Integer.toString(game.getP1W()));
-			intent.putExtra("draws", Integer.toString(game.getDraws()));
+	    	intent.putExtra("p1R", Integer.toString(game.getP1W()));
 			intent.putExtra("p2R", Integer.toString(game.getP2W()));
-			intent.putExtra("phrase", game.play());
+			intent.putExtra("p3R", Integer.toString(game.getP3W()));
+			intent.putExtra("phrase", game.playThree());
 			startActivity(intent);
-			ShowResultActivity.this.finish();
+			ResultThreeActivity.this.finish();
 	    }
+	    else if(k == game.getP3W()){
+	    	Intent intent = new Intent(this, WinnerActivity.class);
+	    	intent.putExtra("player", "PLAYER THREE\n IS THE WINNER!");
+	    	intent.putExtra("p1R", Integer.toString(game.getP1W()));
+			intent.putExtra("p2R", Integer.toString(game.getP2W()));
+			intent.putExtra("p3R", Integer.toString(game.getP3W()));
+			intent.putExtra("phrase", game.playThree());
+			startActivity(intent);
+			ResultThreeActivity.this.finish();
+	    }
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.show_result, menu);
+		getMenuInflater().inflate(R.menu.result_three, menu);
 		return true;
 	}
 
@@ -104,7 +130,7 @@ public class ShowResultActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_show_result,
+			View rootView = inflater.inflate(R.layout.fragment_result_three,
 					container, false);
 			return rootView;
 		}

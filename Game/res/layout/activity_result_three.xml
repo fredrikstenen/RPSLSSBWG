@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-
-<RelativeLayout 
-    android:id="@+id/container"
+    
+<RelativeLayout
+    android:id="@+id/RelativeLayout1X"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,20 +12,34 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.game.WinnerActivity"
-    tools:ignore="MergeRootFrame" >
-    
+    tools:context="com.example.game.ResultThreeActivity" >
+
+    <Button
+        android:id="@+id/menu_buttonX"
+        style="@style/ButtonText"
+        android:layout_below="@+id/new_game_buttonX"
+        android:background="@drawable/button_black"
+        android:onClick="startMain"
+        android:text="@string/menu_button" />
+
+    <Button
+        android:id="@+id/new_game_buttonX"
+        style="@style/ButtonText"
+        android:layout_below="@+id/result_viewX"
+        android:background="@drawable/button_black"
+        android:onClick="startNewGame"
+        android:text="@string/play_again_button" />
+
     <LinearLayout
-        android:id="@+id/Scoreboard"
+        android:id="@+id/ScoreboardX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/winner_view"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:background="#ffffff" >
 
         <TextView
-            android:id="@+id/player1_headline"
+            android:id="@+id/player1_headlineX"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -35,38 +49,49 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/draws_headline"
+            android:id="@+id/player2_headlineX"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/draws_result"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/player2_headline"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
             android:textColor="#ff0000"
+            android:gravity="center"
             android:text="@string/player2_result"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
+        <TextView
+            android:id="@+id/player3_headlineX"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="#76EE00"
+            android:text="@string/player3_result"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
     </LinearLayout>
-    
+
+    <TextView
+        android:id="@+id/result_viewX"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ResultX"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <LinearLayout
-        android:id="@+id/Result"
+        android:id="@+id/ResultX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:background="#ffffff"
-        android:layout_below="@+id/Scoreboard"
+        android:layout_below="@+id/ScoreboardX"
         android:orientation="horizontal" >
         
         <TextView
-            android:id="@+id/player1_result"
+            android:id="@+id/player1_resultX"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -77,17 +102,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/draws_result"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:textSize="60sp"
-            android:text="0"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/player2_result"
+            android:id="@+id/player2_resultX"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -97,35 +112,18 @@
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
+        <TextView
+            android:id="@+id/player3_resultX"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="60sp"
+            android:textColor="#76EE00"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </LinearLayout>
-    
-    <TextView
-        android:id="@+id/winner_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="35sp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:text="@string/winner_example" />
-    
-    <Button
-        android:id="@+id/menu_button"
-        style="@style/ButtonText"
-        android:layout_below="@+id/result_view"
-        android:background="@drawable/button_black"
-        android:onClick="startMain"
-        android:text="@string/menu_button" />
-    
-    <TextView
-        android:id="@+id/result_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Result"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
 </RelativeLayout>
 </ScrollView>
