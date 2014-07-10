@@ -51,51 +51,82 @@ public class ResultThreeActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 	public void lookForWinner(int k, Game game){
-		int ingenting = 0;
+		int winCheck = 0;
 		if (k <= game.getP1W()) {
-			ingenting = ingenting + 1;
+			winCheck = winCheck + 1;
 		}
 		if (k <= game.getP2W()) {
-			ingenting = ingenting + 1;
+			winCheck = winCheck + 1;
 		}
 		if (k <= game.getP3W()) {
-			ingenting = ingenting + 1;
+			winCheck = winCheck + 1;
 		}
-		
-		if(ingenting > 1) {
-			
-		} else {
-		
-		if(k==game.getP1W()){
+		if(winCheck == 1) {
 			Intent intent = new Intent(this, WinnerActivity.class);
-			intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
 			intent.putExtra("p1R", Integer.toString(game.getP1W()));
 			intent.putExtra("p2R", Integer.toString(game.getP2W()));
 			intent.putExtra("p3R", Integer.toString(game.getP3W()));
+			
+			if(k <= game.getP1W()){
+				intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
+		   	}
+		    else if(k <= game.getP2W()){
+		    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
+		    }
+		    else if(k <= game.getP3W()){
+		    	intent.putExtra("player", "PLAYER THREE\n IS THE WINNER!");
+		    }
 			intent.putExtra("phrase", game.playThree());
 			startActivity(intent);
 			ResultThreeActivity.this.finish();
-	   	}
-	    else if(k == game.getP2W()){
-	    	Intent intent = new Intent(this, WinnerActivity.class);
-	    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
-	    	intent.putExtra("p1R", Integer.toString(game.getP1W()));
+		}
+		else if (winCheck == 2) {
+			Intent intent = new Intent(this, WinnerActivity.class);
+			intent.putExtra("p1R", Integer.toString(game.getP1W()));
 			intent.putExtra("p2R", Integer.toString(game.getP2W()));
 			intent.putExtra("p3R", Integer.toString(game.getP3W()));
+			
+			if((k+1) == game.getP1W()){
+				intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
+		   	}
+		    else if((k+1) == game.getP2W()){
+		    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
+		    }
+		    else if((k+1) == game.getP3W()){
+		    	intent.putExtra("player", "PLAYER THREE\n IS THE WINNER!");
+		    }
+		    else {
+		    	if (k == game.getP1W() && k == game.getP2W()){
+		    		intent.putExtra("player", "DRAW BETWHEEN PLAYER ONE AND PLAYER TWO");
+		    		intent.putExtra("showButton", 1);
+		    	}
+		    	if (k == game.getP1W() && k == game.getP3W()){
+		    		intent.putExtra("player", "DRAW BETWHEEN PLAYER ONE AND PLAYER THREE");
+		    		intent.putExtra("showButton", 1);
+		    	}
+		    	if (k == game.getP2W() && k == game.getP3W()){
+		    		intent.putExtra("player", "DRAW BETWHEEN PLAYER TWO AND PLAYER THREE");
+		    		intent.putExtra("showButton", 1);
+		    	}
+		    }
 			intent.putExtra("phrase", game.playThree());
+			intent.putExtra("gameMode", 1);
 			startActivity(intent);
 			ResultThreeActivity.this.finish();
-	    }
-	    else if(k == game.getP3W()){
-	    	Intent intent = new Intent(this, WinnerActivity.class);
-	    	intent.putExtra("player", "PLAYER THREE\n IS THE WINNER!");
-	    	intent.putExtra("p1R", Integer.toString(game.getP1W()));
+		}
+		else if (winCheck == 3){
+			Intent intent = new Intent(this, WinnerActivity.class);
+			intent.putExtra("p1R", Integer.toString(game.getP1W()));
 			intent.putExtra("p2R", Integer.toString(game.getP2W()));
 			intent.putExtra("p3R", Integer.toString(game.getP3W()));
+			if (k == game.getP1W() && k == game.getP2W() && k == game.getP3W()){
+	    		intent.putExtra("player", "DRAW BETWHEEN ALL PLAYERS");
+	    		intent.putExtra("showButton", 2);
+	    	}
 			intent.putExtra("phrase", game.playThree());
+			intent.putExtra("gameMode", 1);
 			startActivity(intent);
 			ResultThreeActivity.this.finish();
-	    }
 		}
 	}
 

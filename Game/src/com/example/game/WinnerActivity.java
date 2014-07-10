@@ -52,6 +52,15 @@ public class WinnerActivity extends ActionBarActivity {
 		    player3Headline.setTextColor(android.graphics.Color.GREEN);
 			TextView winnerView = (TextView) findViewById(R.id.winner_view);
 			winnerView.setText(oldIntent.getStringExtra("player"));
+			if (1 == oldIntent.getIntExtra("showButton", 0)){
+				findViewById(R.id.new_game_button).setVisibility(View.VISIBLE);
+				MainActivity.nrOfPlayers = 2;
+				Game.resetAll();
+			}
+			if (2 == oldIntent.getIntExtra("showButton", 0)){
+				findViewById(R.id.new_game_button).setVisibility(View.VISIBLE);
+				Game.resetAll();
+			}
 		}
 	}
 	public void startMain(View view){
@@ -59,6 +68,13 @@ public class WinnerActivity extends ActionBarActivity {
 		Game.resetAll();
 		startActivity(intent);
 	}
+	public void startNewGame(View view){
+		Intent oldIntent = getIntent();
+		Intent intent = new Intent(this, PlayerOneActivity.class);
+		intent.putExtra("gameMode", oldIntent.getIntExtra("gameMode", 0));
+		startActivity(intent);
+	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

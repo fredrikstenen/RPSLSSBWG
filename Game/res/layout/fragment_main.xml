@@ -1,5 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -19,11 +24,12 @@
     <Button
         android:id="@+id/play_button"
         style="@style/ButtonText"
-        android:layout_below="@+id/welcome_text"
+        android:layout_below="@+id/logo_image"
         android:background="@drawable/button_black"
         android:onClick="chooseMode"
         android:text="@string/play_button"
         android:textSize="20sp" />
+
     <Button
         android:id="@+id/play3_button"
         style="@style/ButtonText"
@@ -36,11 +42,11 @@
     <Button
         android:id="@+id/play_1_button"
         style="@style/ButtonText"
-        android:layout_below="@+id/welcome_text"
+        android:layout_below="@+id/logo_image"
         android:background="@drawable/button_black"
+        android:onClick="startNewGame"
         android:text="@string/play_1_button"
         android:textSize="20sp"
-        android:onClick="startNewGame"
         android:visibility="gone" />
 
     <Button
@@ -48,9 +54,9 @@
         style="@style/ButtonText"
         android:layout_below="@+id/play_5_button"
         android:background="@drawable/button_black"
+        android:onClick="startNewGame"
         android:text="@string/play_10_button"
         android:textSize="20sp"
-        android:onClick="startNewGame"
         android:visibility="gone" />
 
     <Button
@@ -59,9 +65,9 @@
         android:layout_below="@+id/play_3_button"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_black"
+        android:onClick="startNewGame"
         android:text="@string/play_5_button"
         android:textSize="20sp"
-        android:onClick="startNewGame"
         android:visibility="gone" />
 
     <Button
@@ -69,18 +75,29 @@
         style="@style/ButtonText"
         android:layout_below="@+id/play_1_button"
         android:background="@drawable/button_black"
+        android:onClick="startNewGame"
         android:text="@string/play_3_button"
         android:textSize="20sp"
-        android:onClick="startNewGame"
+        android:visibility="gone" />
+    <Button
+        android:id="@+id/menu_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_black"
+        android:text="@string/menu_button"
+        android:layout_below="@+id/play_10_button"
+        android:onClick="returnMain"
+        android:textSize="20sp"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/welcome_text"
+    <ImageView
+        android:id="@+id/logo_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"
-        android:text="@string/welcome_text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/logo" />
 
 </RelativeLayout>
+</ScrollView>

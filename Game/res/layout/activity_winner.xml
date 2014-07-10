@@ -112,10 +112,18 @@
     <Button
         android:id="@+id/menu_button"
         style="@style/ButtonText"
-        android:layout_below="@+id/result_view"
+        android:layout_below="@+id/new_game_button"
         android:background="@drawable/button_black"
         android:onClick="startMain"
         android:text="@string/menu_button" />
+    <Button
+        android:id="@+id/new_game_button"
+        android:visibility="gone"
+        style="@style/ButtonText"
+        android:layout_below="@+id/result_view"
+        android:background="@drawable/button_black"
+        android:onClick="startNewGame"
+        android:text="@string/play_suddendeath_button" />
     
     <TextView
         android:id="@+id/result_view"

@@ -31,6 +31,7 @@ public class MainActivity extends ActionBarActivity {
 		findViewById(R.id.play_3_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_5_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_10_button).setVisibility(View.VISIBLE);
+		findViewById(R.id.menu_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_button).setVisibility(View.GONE);
 		findViewById(R.id.play3_button).setVisibility(View.GONE);
 		findViewById(R.id.play_multi_button).setVisibility(View.GONE);
@@ -61,7 +62,16 @@ public class MainActivity extends ActionBarActivity {
 		}
 		startActivity(intent);
 	}
-
+	public void returnMain(View view){
+		findViewById(R.id.play_1_button).setVisibility(View.GONE);
+		findViewById(R.id.play_3_button).setVisibility(View.GONE);
+		findViewById(R.id.play_5_button).setVisibility(View.GONE);
+		findViewById(R.id.play_10_button).setVisibility(View.GONE);
+		findViewById(R.id.menu_button).setVisibility(View.GONE);
+		findViewById(R.id.play_button).setVisibility(View.VISIBLE);
+		findViewById(R.id.play3_button).setVisibility(View.VISIBLE);
+		findViewById(R.id.play_multi_button).setVisibility(View.VISIBLE);
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
