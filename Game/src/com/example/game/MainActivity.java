@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,7 +14,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
-	
+
 	public static int nrOfPlayers = 0;
 
 	@Override
@@ -27,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 	public void chooseMode(View view){
+		Sound.buttonClick(this);
 		findViewById(R.id.play_1_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_3_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_5_button).setVisibility(View.VISIBLE);
@@ -45,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 	public void startNewGame(View view){
+		Sound.buttonClick(this);
 		Intent intent = new Intent(this, PlayerOneActivity.class);
 		switch (view.getId()) {
         case (R.id.play_1_button):
@@ -63,6 +66,7 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 	public void returnMain(View view){
+		Sound.buttonClick(this);
 		findViewById(R.id.play_1_button).setVisibility(View.GONE);
 		findViewById(R.id.play_3_button).setVisibility(View.GONE);
 		findViewById(R.id.play_5_button).setVisibility(View.GONE);
@@ -86,7 +90,14 @@ public class MainActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.mute_settings) {
+			boolean b = Sound.mute();
+			if(b){
+				item.setTitle("Unmute");
+			}
+			else{
+				item.setTitle("Mute");
+			}
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

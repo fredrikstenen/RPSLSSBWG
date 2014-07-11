@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ public class WinnerActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_winner);
 		Intent oldIntent = getIntent();
 		if (MainActivity.nrOfPlayers == 2){
+			Sound.applause(this);
 			TextView phraseView = (TextView) findViewById(R.id.result_view);
 		    phraseView.setText(oldIntent.getStringExtra("phrase"));
 		    TextView player1Result = (TextView) findViewById(R.id.player1_result);
@@ -53,22 +55,30 @@ public class WinnerActivity extends ActionBarActivity {
 			TextView winnerView = (TextView) findViewById(R.id.winner_view);
 			winnerView.setText(oldIntent.getStringExtra("player"));
 			if (1 == oldIntent.getIntExtra("showButton", 0)){
+				Sound.draw_sound(this);
 				findViewById(R.id.new_game_button).setVisibility(View.VISIBLE);
 				MainActivity.nrOfPlayers = 2;
 				Game.resetAll();
 			}
-			if (2 == oldIntent.getIntExtra("showButton", 0)){
+			else if (2 == oldIntent.getIntExtra("showButton", 0)){
+				Sound.draw_sound(this);
 				findViewById(R.id.new_game_button).setVisibility(View.VISIBLE);
 				Game.resetAll();
 			}
+			else {
+				Sound.applause(this);
+			}
 		}
+		
 	}
 	public void startMain(View view){
+		Sound.buttonClick(this);
 		Intent intent = new Intent(this, MainActivity.class);
 		Game.resetAll();
 		startActivity(intent);
 	}
 	public void startNewGame(View view){
+		Sound.buttonClick(this);
 		Intent oldIntent = getIntent();
 		Intent intent = new Intent(this, PlayerOneActivity.class);
 		intent.putExtra("gameMode", oldIntent.getIntExtra("gameMode", 0));
@@ -90,7 +100,14 @@ public class WinnerActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.mute_settings) {
+			boolean b = Sound.mute();
+			if(b){
+				item.setTitle("Unmute");
+			}
+			else{
+				item.setTitle("Mute");
+			}
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Rock.Spock.Glock</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Rock Spock Glock</string>
+    <string name="mute_settings">Mute</string>
+    <string name="action_settings">Setting</string>
     <string name="welcome_text">Welcome to Rock, Paper, Scissors, Lizard, Spock, Spider-Man, Batman, Wizard, Glock.</string>
     <string name="play_button">2 players on your phone.</string>
     <string name="play3_button">3 players on your phone.</string>

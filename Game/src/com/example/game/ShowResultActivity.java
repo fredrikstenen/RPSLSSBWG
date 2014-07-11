@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,12 +41,14 @@ public class ShowResultActivity extends ActionBarActivity {
 	    player2Result.setText(Integer.toString(game.getP2W()));
 	}
 	public void startNewGame(View view){
+		Sound.buttonClick(this);
 		Intent oldIntent = getIntent();
 		Intent intent = new Intent(this, PlayerOneActivity.class);
 		intent.putExtra("gameMode", oldIntent.getIntExtra("gameMode", 0));
 		startActivity(intent);
 	}
 	public void startMain(View view){
+		Sound.buttonClick(this);
 		Intent intent = new Intent(this, MainActivity.class);
 		Game.resetAll();
 		startActivity(intent);
@@ -87,7 +90,14 @@ public class ShowResultActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.mute_settings) {
+			boolean b = Sound.mute();
+			if(b){
+				item.setTitle("Unmute");
+			}
+			else{
+				item.setTitle("Mute");
+			}
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
