@@ -1,7 +1,6 @@
 package com.example.game;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -151,6 +150,10 @@ public class ResultThreeActivity extends ActionBarActivity {
 				item.setTitle("Mute");
 			}
 			return true;
+		}
+		if (id == R.id.about){
+			Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

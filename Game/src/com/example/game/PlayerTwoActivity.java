@@ -1,7 +1,6 @@
 package com.example.game;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -34,31 +33,31 @@ public class PlayerTwoActivity extends ActionBarActivity {
 		intent.putExtra("playerOneChoice", oldIntent.getIntExtra("playerOneChoice", 0));
 		switch (view.getId()){
 		case (R.id.rock_button):
-			intent.putExtra("playerTwoChoice", (int)1);
+			intent.putExtra("playerTwoChoice", Game.ROCKLIST);
         break;
         case (R.id.paper_button):
-        	intent.putExtra("playerTwoChoice", (int)2);
+        	intent.putExtra("playerTwoChoice", Game.PAPERLIST);
         break;
         case (R.id.scissors_button):
-        	intent.putExtra("playerTwoChoice", (int)3);
+        	intent.putExtra("playerTwoChoice", Game.SCISSORSLIST);
         break;
         case (R.id.lizard_button):
-        	intent.putExtra("playerTwoChoice", (int)4);
+        	intent.putExtra("playerTwoChoice", Game.LIZARDLIST);
         break;
         case (R.id.spock_button):
-        	intent.putExtra("playerTwoChoice", (int)5);
+        	intent.putExtra("playerTwoChoice", Game.SPOCKLIST);
         break;
         case (R.id.spiderman_button):
-        	intent.putExtra("playerTwoChoice", (int)6);
+        	intent.putExtra("playerTwoChoice", Game.SPIDERMANLIST);
         break;
         case (R.id.batman_button):
-        	intent.putExtra("playerTwoChoice", (int)7);
+        	intent.putExtra("playerTwoChoice", Game.BATMANLIST);
         break;
         case (R.id.wizard_button):
-        	intent.putExtra("playerTwoChoice", (int)8);
+        	intent.putExtra("playerTwoChoice", Game.WIZARDLIST);
         break;
         case (R.id.glock_button):
-        	intent.putExtra("playerTwoChoice", (int)9);
+        	intent.putExtra("playerTwoChoice", Game.GLOCKLIST);
         break;
 		}
 		startActivity(intent);
@@ -89,6 +88,10 @@ public class PlayerTwoActivity extends ActionBarActivity {
 				item.setTitle("Mute");
 			}
 			return true;
+		}
+		if (id == R.id.about){
+			Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

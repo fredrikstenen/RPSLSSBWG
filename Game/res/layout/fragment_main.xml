@@ -14,14 +14,6 @@
     tools:context="com.example.game.MainActivity$PlaceholderFragment" >
 
     <Button
-        android:id="@+id/play_multi_button"
-        style="@style/ButtonText"
-        android:layout_below="@+id/play3_button"
-        android:background="@drawable/button_black"
-        android:text="@string/play_multi_button"
-        android:textSize="20sp" />
-
-    <Button
         android:id="@+id/play_button"
         style="@style/ButtonText"
         android:layout_below="@+id/logo_image"

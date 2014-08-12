@@ -10,9 +10,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon_small"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/app_theme" >
+        android:theme="@style/app_theme">
         <activity
             android:name="com.example.game.MainActivity"
             android:label="@string/app_name" >
@@ -45,6 +45,10 @@
         <activity
             android:name="com.example.game.ResultThreeActivity"
             android:label="@string/title_activity_result_three" >
+        </activity>
+        <activity
+            android:name="com.example.game.AboutActivity"
+            android:label="@string/title_activity_about" >
         </activity>
     </application>
 

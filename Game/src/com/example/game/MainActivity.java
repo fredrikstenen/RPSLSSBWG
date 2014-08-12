@@ -4,7 +4,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,7 +35,6 @@ public class MainActivity extends ActionBarActivity {
 		findViewById(R.id.menu_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_button).setVisibility(View.GONE);
 		findViewById(R.id.play3_button).setVisibility(View.GONE);
-		findViewById(R.id.play_multi_button).setVisibility(View.GONE);
 		switch (view.getId()) {
         case (R.id.play_button):
         	nrOfPlayers = 2;
@@ -74,7 +72,6 @@ public class MainActivity extends ActionBarActivity {
 		findViewById(R.id.menu_button).setVisibility(View.GONE);
 		findViewById(R.id.play_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play3_button).setVisibility(View.VISIBLE);
-		findViewById(R.id.play_multi_button).setVisibility(View.VISIBLE);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,6 +96,10 @@ public class MainActivity extends ActionBarActivity {
 				item.setTitle("Mute");
 			}
 			return true;
+		}
+		if (id == R.id.about){
+			Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

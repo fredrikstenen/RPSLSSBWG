@@ -1,7 +1,6 @@
 package com.example.game;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -32,31 +31,31 @@ public class PlayerThreeActivity extends ActionBarActivity {
 		intent.putExtra("playerTwoChoice", oldIntent.getIntExtra("playerTwoChoice", 0));
 		switch (view.getId()){
 		case (R.id.rock_button):
-			intent.putExtra("playerThreeChoice", (int)1);
+			intent.putExtra("playerThreeChoice", Game.ROCKLIST);
         break;
         case (R.id.paper_button):
-        	intent.putExtra("playerThreeChoice", (int)2);
+        	intent.putExtra("playerThreeChoice", Game.PAPERLIST);
         break;
         case (R.id.scissors_button):
-        	intent.putExtra("playerThreeChoice", (int)3);
+        	intent.putExtra("playerThreeChoice", Game.SCISSORSLIST);
         break;
         case (R.id.lizard_button):
-        	intent.putExtra("playerThreeChoice", (int)4);
+        	intent.putExtra("playerThreeChoice", Game.LIZARDLIST);
         break;
         case (R.id.spock_button):
-        	intent.putExtra("playerThreeChoice", (int)5);
+        	intent.putExtra("playerThreeChoice", Game.SPOCKLIST);
         break;
         case (R.id.spiderman_button):
-        	intent.putExtra("playerThreeChoice", (int)6);
+        	intent.putExtra("playerThreeChoice", Game.SPIDERMANLIST);
         break;
         case (R.id.batman_button):
-        	intent.putExtra("playerThreeChoice", (int)7);
+        	intent.putExtra("playerThreeChoice", Game.BATMANLIST);
         break;
         case (R.id.wizard_button):
-        	intent.putExtra("playerThreeChoice", (int)8);
+        	intent.putExtra("playerThreeChoice", Game.WIZARDLIST);
         break;
         case (R.id.glock_button):
-        	intent.putExtra("playerThreeChoice", (int)9);
+        	intent.putExtra("playerThreeChoice", Game.GLOCKLIST);
         break;
 		}
 		startActivity(intent);
@@ -86,6 +85,10 @@ public class PlayerThreeActivity extends ActionBarActivity {
 				item.setTitle("Mute");
 			}
 			return true;
+		}
+		if (id == R.id.about){
+			Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

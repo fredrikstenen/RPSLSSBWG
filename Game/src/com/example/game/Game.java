@@ -16,147 +16,157 @@ public class Game {
 	String[] p2P;
 	String[] p3P;
 	
-	public Game(int i, int j, int k){
-		if (i == 1){
+	public static final int ROCKLIST = 1;
+	public static final int PAPERLIST = 2;
+	public static final int SCISSORSLIST = 3;
+	public static final int LIZARDLIST = 4;
+	public static final int SPOCKLIST = 5;
+	public static final int SPIDERMANLIST = 6;
+	public static final int BATMANLIST = 7;
+	public static final int WIZARDLIST = 8;
+	public static final int GLOCKLIST = 9;
+	
+	public Game(int player1, int player2, int incGameMode){
+		if (player1 == ROCKLIST){
 			p1 = rockList;
 			p1P = rockPhrase;}
-		if (i == 2){
+		else if (player1 == PAPERLIST){
 			p1 = paperList;
 			p1P = paperPhrase;}
-		if (i == 3){
+		else if (player1 == SCISSORSLIST){
 			p1 = scissorsList;
 			p1P = scissorsPhrase;}
-		if (i == 4){
+		else if (player1 == LIZARDLIST){
 			p1 = lizardList;
 			p1P = lizardPhrase;}
-		if (i == 5){
+		else if (player1 == SPOCKLIST){
 			p1 = spockList;
 			p1P = spockPhrase;}
-		if (i == 6){
+		else if (player1 == SPIDERMANLIST){
 			p1 = spidermanList;
 			p1P = spidermanPhrase;}
-		if (i == 7){
+		else if (player1 == BATMANLIST){
 			p1 = batmanList;
 			p1P = batmanPhrase;}
-		if (i == 8){
+		else if (player1 == WIZARDLIST){
 			p1 = wizardList;
 			p1P = wizardPhrase;}
-		if (i == 9){
+		else if (player1 == GLOCKLIST){
 			p1 = glockList;
 			p1P = glockPhrase;}
-		if (j == 1){
+		if (player2 == ROCKLIST){
 			p2 = rockList;
 			p2P = rockPhrase;}
-		if (j == 2){
+		else if (player2 == PAPERLIST){
 			p2 = paperList;
 			p2P = paperPhrase;}
-		if (j == 3){
+		else if (player2 == SCISSORSLIST){
 			p2 = scissorsList;
 			p2P = scissorsPhrase;}
-		if (j == 4){
+		else if (player2 == LIZARDLIST){
 			p2 = lizardList;
 			p2P = lizardPhrase;}
-		if (j == 5){
+		else if (player2 == SPOCKLIST){
 			p2 = spockList;
 			p2P = spockPhrase;}
-		if (j == 6){
+		else if (player2 == SPIDERMANLIST){
 			p2 = spidermanList;
 			p2P = spidermanPhrase;}
-		if (j == 7){
+		else if (player2 == BATMANLIST){
 			p2 = batmanList;
 			p2P = batmanPhrase;}
-		if (j == 8){
+		else if (player2 == WIZARDLIST){
 			p2 = wizardList;
 			p2P = wizardPhrase;}
-		if (j == 9){
+		else if (player2 == GLOCKLIST){
 			p2 = glockList;
 			p2P = glockPhrase;}
-		gameMode = k;
+		gameMode = incGameMode;
 		noOfGames++;
 	}
-	public Game(int i, int j, int a, int k){
-		if (i == 1){
+	public Game(int player1, int player2, int player3, int incGameMode){
+		if (player1 == ROCKLIST){
 			p1 = rockList;
 			p1P = rockPhrase;}
-		if (i == 2){
+		else if (player1 == PAPERLIST){
 			p1 = paperList;
 			p1P = paperPhrase;}
-		if (i == 3){
+		else if (player1 == SCISSORSLIST){
 			p1 = scissorsList;
 			p1P = scissorsPhrase;}
-		if (i == 4){
+		else if (player1 == LIZARDLIST){
 			p1 = lizardList;
 			p1P = lizardPhrase;}
-		if (i == 5){
+		else if (player1 == SPOCKLIST){
 			p1 = spockList;
 			p1P = spockPhrase;}
-		if (i == 6){
+		else if (player1 == SPIDERMANLIST){
 			p1 = spidermanList;
 			p1P = spidermanPhrase;}
-		if (i == 7){
+		else if (player1 == BATMANLIST){
 			p1 = batmanList;
 			p1P = batmanPhrase;}
-		if (i == 8){
+		else if (player1 == WIZARDLIST){
 			p1 = wizardList;
 			p1P = wizardPhrase;}
-		if (i == 9){
+		else if (player1 == GLOCKLIST){
 			p1 = glockList;
 			p1P = glockPhrase;}
-		if (j == 1){
+		if (player2 == ROCKLIST){
 			p2 = rockList;
 			p2P = rockPhrase;}
-		if (j == 2){
+		else if (player2 == PAPERLIST){
 			p2 = paperList;
 			p2P = paperPhrase;}
-		if (j == 3){
+		else if (player2 == SCISSORSLIST){
 			p2 = scissorsList;
 			p2P = scissorsPhrase;}
-		if (j == 4){
+		else if (player2 == LIZARDLIST){
 			p2 = lizardList;
 			p2P = lizardPhrase;}
-		if (j == 5){
+		else if (player2 == SPOCKLIST){
 			p2 = spockList;
 			p2P = spockPhrase;}
-		if (j == 6){
+		else if (player2 == SPIDERMANLIST){
 			p2 = spidermanList;
 			p2P = spidermanPhrase;}
-		if (j == 7){
+		else if (player2 == BATMANLIST){
 			p2 = batmanList;
 			p2P = batmanPhrase;}
-		if (j == 8){
+		else if (player2 == WIZARDLIST){
 			p2 = wizardList;
 			p2P = wizardPhrase;}
-		if (j == 9){
+		else if (player2 == GLOCKLIST){
 			p2 = glockList;
 			p2P = glockPhrase;}
-		if (a == 1){
+		if (player3 == ROCKLIST){
 			p3 = rockList;
 			p3P = rockPhrase;}
-		if (a == 2){
+		else if (player3 == PAPERLIST){
 			p3 = paperList;
 			p3P = paperPhrase;}
-		if (a == 3){
+		else if (player3 == SCISSORSLIST){
 			p3 = scissorsList;
 			p3P = scissorsPhrase;}
-		if (a == 4){
+		else if (player3 == LIZARDLIST){
 			p3 = lizardList;
 			p3P = lizardPhrase;}
-		if (a == 5){
+		else if (player3 == SPOCKLIST){
 			p3 = spockList;
 			p3P = spockPhrase;}
-		if (a == 6){
+		else if (player3 == SPIDERMANLIST){
 			p3 = spidermanList;
 			p3P = spidermanPhrase;}
-		if (a == 7){
+		else if (player3 == BATMANLIST){
 			p3 = batmanList;
 			p3P = batmanPhrase;}
-		if (a == 8){
+		else if (player3 == WIZARDLIST){
 			p3 = wizardList;
 			p3P = wizardPhrase;}
-		if (a == 9){
+		else if (player3 == GLOCKLIST){
 			p3 = glockList;
 			p3P = glockPhrase;}
-		gameMode = k;
+		gameMode = incGameMode;
 		noOfGames++;
 	}
 	public static void resetAll(){
