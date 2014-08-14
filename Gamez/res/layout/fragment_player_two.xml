@@ -1,0 +1,81 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<LinearLayout
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.game.PlayerTwoActivity$PlaceholderFragment" >
+
+    <Button
+        android:id="@+id/rock_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_gray"
+        android:onClick="goToResult"
+        android:text="@string/rock_button" />
+
+    <Button
+        android:id="@+id/paper_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_yellow"
+        android:onClick="goToResult"
+        android:text="@string/paper_button" />
+
+    <Button
+        android:id="@+id/scissors_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_pink"
+        android:onClick="goToResult"
+        android:text="@string/scissors_button" />
+
+    <Button
+        android:id="@+id/lizard_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_green"
+        android:onClick="goToResult"
+        android:text="@string/lizard_button" />
+
+    <Button
+        android:id="@+id/spock_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_teal"
+        android:onClick="goToResult"
+        android:text="@string/spock_button" />
+
+    <Button
+        android:id="@+id/spiderman_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_red"
+        android:onClick="goToResult"
+        android:text="@string/spiderman_button" />
+
+    <Button
+        android:id="@+id/batman_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_black"
+        android:onClick="goToResult"
+        android:text="@string/batman_button" />
+
+    <Button
+        android:id="@+id/wizard_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_purple"
+        android:onClick="goToResult"
+        android:text="@string/wizard_button" />
+
+    <Button
+        android:id="@+id/glock_button"
+        style="@style/ButtonText"
+        android:background="@drawable/button_blue"
+        android:onClick="goToResult"
+        android:text="@string/glock_button" />
+
+</LinearLayout>
+</ScrollView>
