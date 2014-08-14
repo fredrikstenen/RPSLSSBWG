@@ -1,14 +1,32 @@
 package com.example.game;
-
+/** This class contains information about the different types of signs that can be found within
+ * the Rock Spock Glock game. For example the signs weaknesses and strengths as well as the different
+ * phrases connected to each victory.
+ * 
+ * An instance of the Game class contains information on which signs all of the participants 
+ * have chosen, and what game mode is currently being played.
+ * 
+ * @author Daniel
+ * @author Fredrik
+ * @version 4.0
+ *
+ */
 public class Game {
-	
+	/** Tracks the number of wins player1 currently has. */
 	public static int p1w = 0;
+	/** Tracks the number of wins player2 currently has. */
 	public static int p2w = 0;
+	/** Tracks the number of wins player3 currently has. */
 	public static int p3w = 0;
+	/** Tracks the number of draws that has occurred. */
 	public static int draws = 0;
+	/** Tracks the number of games that has been played. */
 	public static int noOfGames;
+	/** The gameMode variable contains a number that represents what number of wins that a player is
+	 * required to have for him to win the set. */
 	public static int gameMode;
 	
+	//These lists holds the strengths and phrases of each players chosen sign.
 	String[] p1;
 	String[] p2;
 	String[] p3;
@@ -16,6 +34,7 @@ public class Game {
 	String[] p2P;
 	String[] p3P;
 	
+	//Constants for each sign.
 	public static final int ROCKLIST = 1;
 	public static final int PAPERLIST = 2;
 	public static final int SCISSORSLIST = 3;
@@ -26,6 +45,14 @@ public class Game {
 	public static final int WIZARDLIST = 8;
 	public static final int GLOCKLIST = 9;
 	
+	/** Constructor for a 2 player game session. Sets the players chosen signs
+	 * and the phrases that come with them. 
+	 * 
+	 * 
+	 * @param player1	Contains the sign that player1 has chosen.
+	 * @param player2	Contains the sign that player2 has chosen.
+	 * @param incGameMode Contains what game mode is currently being played.
+	 */
 	public Game(int player1, int player2, int incGameMode){
 		if (player1 == ROCKLIST){
 			p1 = rockList;
@@ -84,6 +111,15 @@ public class Game {
 		gameMode = incGameMode;
 		noOfGames++;
 	}
+	/** Constructor for a 3 player game session. Sets the players chosen signs
+	 * and the phrases that come with them. 
+	 * 
+	 * 
+	 * @param player1	Contains the sign that player1 has chosen.
+	 * @param player2	Contains the sign that player2 has chosen.
+	 * @param player3	Contains the sign that player3 has chosen.
+	 * @param incGameMode Contains what game mode is currently being played.
+	 */
 	public Game(int player1, int player2, int player3, int incGameMode){
 		if (player1 == ROCKLIST){
 			p1 = rockList;
@@ -169,6 +205,12 @@ public class Game {
 		gameMode = incGameMode;
 		noOfGames++;
 	}
+	
+	/** Method for reseting the variables that track each players current standing 
+	 * as well as draws and number of games played. This method is called once a player
+	 * reaches the amount of wins required to win the game set(This number is defined in gameMode variable).
+	 * 
+	 */
 	public static void resetAll(){
 		p1w = 0;
 		p2w = 0;
@@ -194,6 +236,13 @@ public class Game {
 	public int getGameMode(){
 		return gameMode;
 	}
+	/** The play method determines which of the two chosen signs is the winner, and returns
+	 * the correct phrase.
+	 * 
+	 * This method is used for 2 player games.
+	 * 
+	 * @return Returns a string that defines the outcome of the game in text.
+	 */
 	public String play(){
 		int result = 0;
 		String phrase = "";
@@ -206,7 +255,7 @@ public class Game {
 					break;
 				}
 				else {
-						result = 1;
+					result = 1;
 				}
 			}
 		}
@@ -226,6 +275,14 @@ public class Game {
 		}
 		return phrase;
 	}
+	
+	/** The playThree method determines the outcome of a 3 player game and returns
+	 *  a string that describes which beats which amongst the players chosen signs.
+	 * 
+	 * 
+	 * 
+	 * @return Returns a string that defines the outcome of the game in text.
+	 */
 	public String playThree(){
 		String winner12 = "";
 		String winner13 = "";
@@ -250,7 +307,7 @@ public class Game {
 			}
 		}
 		else {
-			phrase12 = "It's a draw betwheen Player 1 and Player 2 as both chose " + p1[0].toString();
+			phrase12 = "It's a draw between Player 1 and Player 2 as both chose " + p1[0].toString();
 			draws++;
 		}
 		if (!p1[0].equals(p3[0])) {
@@ -293,8 +350,7 @@ public class Game {
 		}
 		return winner12 + phrase12 + "\n" + winner13 + phrase13 + "\n" + winner23 + phrase23;
 	}
-
-
+	//Lists containing the signs different strengths.
 	static String[] rockList = {"rock", "lizard", "wizard", "spider-man", "scissors"};
 	static String[] paperList = {"paper", "rock", "spock", "batman", "glock"};
 	static String[] scissorsList = {"scissors", "paper", "lizard", "wizard", "spider-man"};
@@ -304,7 +360,7 @@ public class Game {
 	static String[] batmanList = {"batman", "spider-man", "scissors", "rock", "spock"};
 	static String[] wizardList = {"wizard", "batman", "glock", "paper", "lizard"};
 	static String[] glockList = {"glock", "scissors", "rock", "spock", "batman"};
-		
+	//Lists containing the phrases for when each sign beats another.
 	static String[] rockPhrase = {" ", "Rock crushes Lizard", "Rock interupts Wizard", "Rock knockes out Spider-Man", "Rock crushes Scissors"};
 	static String[] paperPhrase = {" ", "Paper covers Rock", "Paper disproves Spock", "Paper delays Batman", "Paper jams Glock"};
 	static String[] scissorsPhrase = {" ", "Scissors cut Paper", "Scissors decapitates Lizard", "Scissors cut Wizard", "Scissors cut Spider-Man"};
@@ -314,4 +370,4 @@ public class Game {
 	static String[] batmanPhrase = {" ", "Batman scares Spider-Man", "Batman dismantles scissors", "Batman explodes rock", "Batman hangs Spock"};
 	static String[] wizardPhrase = {" ", "Wizard stuns Batman", "Wizard melts Glock", "Wizard burns Paper", "Wizard transform Lizard"};
 	static String[] glockPhrase = {" ", "Glock dents Scissors", "Glock breaks Rock", "Glock shoots Spock", "Glock kills Batman's mom"};
-}
+	} 
