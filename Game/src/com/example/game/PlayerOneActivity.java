@@ -17,6 +17,7 @@ public class PlayerOneActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 		setContentView(R.layout.activity_player_one);
+		setTitle(MainActivity.player1Name);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()

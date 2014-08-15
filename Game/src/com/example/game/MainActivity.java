@@ -5,16 +5,21 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
 
 	public static int nrOfPlayers = 0;
+	public static String player1Name;
+	public static String player2Name;
+	public static String player3Name;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +31,58 @@ public class MainActivity extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
-	public void chooseMode(View view){
+	public void enterName(View view){
 		Sound.buttonClick(this);
 		findViewById(R.id.play_1_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_3_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_5_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.play_10_button).setVisibility(View.VISIBLE);
 		findViewById(R.id.menu_button).setVisibility(View.VISIBLE);
-		findViewById(R.id.play_button).setVisibility(View.GONE);
-		findViewById(R.id.play3_button).setVisibility(View.GONE);
+		EditText player1 = (EditText)findViewById(R.id.editPlayer1);
+		player1Name = player1.getText().toString();
+		EditText player2 = (EditText)findViewById(R.id.editPlayer2);
+		player2Name = player2.getText().toString();
+		EditText player3 = (EditText)findViewById(R.id.editPlayer3);
+		player3Name = player3.getText().toString();
+		if (player1Name.equals("")){
+			player1Name = "Player 1";
+		}
+		if (player2Name.equals("")){
+			player2Name = "Player 2";
+		}
+		if (player3Name.equals("")){
+			player3Name = "Player 3";
+		}
+		findViewById(R.id.editPlayer1).setVisibility(View.GONE);
+		findViewById(R.id.editPlayer2).setVisibility(View.GONE);
+		findViewById(R.id.editPlayer3).setVisibility(View.GONE);
+		findViewById(R.id.continue_button).setVisibility(View.GONE);
+	}
+	public void chooseMode(View view){
+		Sound.buttonClick(this);
 		switch (view.getId()) {
         case (R.id.play_button):
         	nrOfPlayers = 2;
-        break;
+        	choseName();
+        	break;
         case (R.id.play3_button):
         	nrOfPlayers = 3;
-        break;
+        	choseName();
+        	break;
+		}	
+	}
+	public void choseName(){
+		if (nrOfPlayers == 2){
+        	findViewById(R.id.editPlayer1).setVisibility(View.VISIBLE);
+        	findViewById(R.id.editPlayer2).setVisibility(View.VISIBLE);
+        	findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
+        	findViewById(R.id.editPlayer3).setVisibility(View.GONE);
+		}
+		else if (nrOfPlayers == 3){
+			findViewById(R.id.editPlayer1).setVisibility(View.VISIBLE);
+        	findViewById(R.id.editPlayer2).setVisibility(View.VISIBLE);
+        	findViewById(R.id.editPlayer3).setVisibility(View.VISIBLE);
+        	findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
 		}
 	}
 	public void startNewGame(View view){
@@ -120,5 +161,4 @@ public class MainActivity extends ActionBarActivity {
 			return rootView;
 		}
 	}
-
 }

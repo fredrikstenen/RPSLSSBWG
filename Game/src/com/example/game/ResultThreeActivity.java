@@ -17,6 +17,7 @@ public class ResultThreeActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_three);
+		setNames();
 		Bundle extras = getIntent().getExtras();
 		int i = extras.getInt("playerOneChoice");
 		int j = extras.getInt("playerTwoChoice");
@@ -45,6 +46,9 @@ public class ResultThreeActivity extends ActionBarActivity {
 		Sound.buttonClick(this);
 		Intent intent = new Intent(this, MainActivity.class);
 		Game.resetAll();
+		MainActivity.player1Name = null;
+		MainActivity.player2Name = null;
+		MainActivity.player3Name = null;
 		startActivity(intent);
 	}
 	public void lookForWinner(int k, Game game){
@@ -65,13 +69,13 @@ public class ResultThreeActivity extends ActionBarActivity {
 			intent.putExtra("p3R", Integer.toString(game.getP3W()));
 			
 			if(k <= game.getP1W()){
-				intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
+				intent.putExtra("player", MainActivity.player1Name + "\n IS THE WINNER!");
 		   	}
 		    else if(k <= game.getP2W()){
-		    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
+		    	intent.putExtra("player", MainActivity.player2Name + "\n IS THE WINNER!");
 		    }
 		    else if(k <= game.getP3W()){
-		    	intent.putExtra("player", "PLAYER THREE\n IS THE WINNER!");
+		    	intent.putExtra("player", MainActivity.player3Name + "\n IS THE WINNER!");
 		    }
 			intent.putExtra("phrase", game.playThree());
 			startActivity(intent);
@@ -84,25 +88,25 @@ public class ResultThreeActivity extends ActionBarActivity {
 			intent.putExtra("p3R", Integer.toString(game.getP3W()));
 			
 			if((k+1) == game.getP1W()){
-				intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
+				intent.putExtra("player", MainActivity.player1Name + "\n IS THE WINNER!");
 		   	}
 		    else if((k+1) == game.getP2W()){
-		    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
+		    	intent.putExtra("player", MainActivity.player2Name + "\n IS THE WINNER!");
 		    }
 		    else if((k+1) == game.getP3W()){
-		    	intent.putExtra("player", "PLAYER THREE\n IS THE WINNER!");
+		    	intent.putExtra("player", MainActivity.player3Name + "\n IS THE WINNER!");
 		    }
 		    else {
 		    	if (k == game.getP1W() && k == game.getP2W()){
-		    		intent.putExtra("player", "DRAW BETWHEEN PLAYER ONE AND PLAYER TWO");
+		    		intent.putExtra("player", "DRAW BETWHEEN " + MainActivity.player1Name + " AND " + MainActivity.player2Name);
 		    		intent.putExtra("showButton", 1);
 		    	}
 		    	if (k == game.getP1W() && k == game.getP3W()){
-		    		intent.putExtra("player", "DRAW BETWHEEN PLAYER ONE AND PLAYER THREE");
+		    		intent.putExtra("player", "DRAW BETWHEEN " + MainActivity.player1Name + " AND " + MainActivity.player3Name);
 		    		intent.putExtra("showButton", 1);
 		    	}
 		    	if (k == game.getP2W() && k == game.getP3W()){
-		    		intent.putExtra("player", "DRAW BETWHEEN PLAYER TWO AND PLAYER THREE");
+		    		intent.putExtra("player", "DRAW BETWHEEN " + MainActivity.player2Name + " AND " + MainActivity.player3Name);
 		    		intent.putExtra("showButton", 1);
 		    	}
 		    }
@@ -125,6 +129,14 @@ public class ResultThreeActivity extends ActionBarActivity {
 			startActivity(intent);
 			ResultThreeActivity.this.finish();
 		}
+	}
+	public void setNames(){
+		TextView player1View = (TextView) findViewById(R.id.player1_headlineX);
+		player1View.setText(MainActivity.player1Name);
+		TextView player2View = (TextView) findViewById(R.id.player2_headlineX);
+		player2View.setText(MainActivity.player2Name);
+		TextView player3View = (TextView) findViewById(R.id.player3_headlineX);
+		player3View.setText(MainActivity.player3Name);
 	}
 
 	@Override

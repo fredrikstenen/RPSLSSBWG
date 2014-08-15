@@ -22,6 +22,10 @@ public class WinnerActivity extends ActionBarActivity {
 		Intent oldIntent = getIntent();
 		if (MainActivity.nrOfPlayers == 2){
 			Sound.applause(this);
+			TextView player1Headline = (TextView) findViewById(R.id.player1_headline);
+		    player1Headline.setText(MainActivity.player1Name);
+		    TextView player2Headline = (TextView) findViewById(R.id.player2_headline);
+		    player2Headline.setText(MainActivity.player2Name);
 			TextView phraseView = (TextView) findViewById(R.id.result_view);
 		    phraseView.setText(oldIntent.getStringExtra("phrase"));
 		    TextView player1Result = (TextView) findViewById(R.id.player1_result);
@@ -36,19 +40,21 @@ public class WinnerActivity extends ActionBarActivity {
 		else if (MainActivity.nrOfPlayers == 3) {
 			TextView phraseView = (TextView) findViewById(R.id.result_view);
 		    phraseView.setText(oldIntent.getStringExtra("phrase"));
+		    TextView player1Headline = (TextView) findViewById(R.id.player1_headline);
+		    player1Headline.setText(MainActivity.player1Name);
 		    TextView player1Result = (TextView) findViewById(R.id.player1_result);
 		    player1Result.setText(oldIntent.getStringExtra("p1R"));
 		    TextView player2Result = (TextView) findViewById(R.id.draws_result);
 		    player2Result.setText(oldIntent.getStringExtra("p2R"));
 		    player2Result.setTextColor(android.graphics.Color.RED);
 		    TextView player2Headline = (TextView) findViewById(R.id.draws_headline);
-		    player2Headline.setText("Player 2");
+		    player2Headline.setText(MainActivity.player2Name);
 		    player2Headline.setTextColor(android.graphics.Color.RED);
 		    TextView player3Result = (TextView) findViewById(R.id.player2_result);
 		    player3Result.setTextColor(android.graphics.Color.GREEN);
 		    player3Result.setText(oldIntent.getStringExtra("p3R"));
 		    TextView player3Headline = (TextView) findViewById(R.id.player2_headline);
-		    player3Headline.setText("Player 3");
+		    player3Headline.setText(MainActivity.player3Name);
 		    player3Headline.setTextColor(android.graphics.Color.GREEN);
 			TextView winnerView = (TextView) findViewById(R.id.winner_view);
 			winnerView.setText(oldIntent.getStringExtra("player"));
@@ -73,6 +79,9 @@ public class WinnerActivity extends ActionBarActivity {
 		Sound.buttonClick(this);
 		Intent intent = new Intent(this, MainActivity.class);
 		Game.resetAll();
+		MainActivity.player1Name = null;
+		MainActivity.player2Name = null;
+		MainActivity.player3Name = null;
 		startActivity(intent);
 	}
 	public void startNewGame(View view){

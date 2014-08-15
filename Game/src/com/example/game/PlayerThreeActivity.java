@@ -16,6 +16,7 @@ public class PlayerThreeActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_player_three);
+		setTitle(MainActivity.player3Name);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()

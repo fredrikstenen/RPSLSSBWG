@@ -270,7 +270,7 @@ public class Game {
 			}
 		}
 		if (result == 0) {
-			phrase = "It's a draw since both chose " + p1[0].toString();
+			phrase = "It's a draw since both players chose " + p1[0].toString();
 			draws++;
 		}
 		return phrase;
@@ -293,13 +293,13 @@ public class Game {
 		if (!p1[0].equals(p2[0])) {
 			for (int i = 1; i < p1.length; i++) {
 				if (p1[i].equals(p2[0])) {
-					winner12 = "Player 1 beats Player 2: ";
+					winner12 = MainActivity.player1Name + " beats " + MainActivity.player2Name + ":\n";
 					phrase12 = p1P[i];
 					p1w++;
 					break;
 				}
 				if (p2[i].equals(p1[0])) {
-					winner12 = "Player 2 beats Player 1: ";
+					winner12 = MainActivity.player2Name + " beats " + MainActivity.player1Name + ":\n";
 					phrase12 = p2P[i];
 					p2w++;
 					break;
@@ -307,19 +307,19 @@ public class Game {
 			}
 		}
 		else {
-			phrase12 = "It's a draw between Player 1 and Player 2 as both chose " + p1[0].toString();
+			phrase12 = "It's a draw between " + MainActivity.player1Name + " and " + MainActivity.player2Name + " as both chose " + p1[0].toString();
 			draws++;
 		}
 		if (!p1[0].equals(p3[0])) {
 			for (int i = 1; i < p1.length; i++) {
 				if (p1[i].equals(p3[0])) {
-					winner13 = "Player 1 beats Player 3: ";
+					winner13 = MainActivity.player1Name + " beats " + MainActivity.player3Name + ":\n";
 					phrase13 = p1P[i];
 					p1w++;
 					break;
 				}
 				if (p3[i].equals(p1[0])) {
-					winner13 = "Player 3 beats player 1: ";
+					winner13 = MainActivity.player3Name + " beats " + MainActivity.player1Name + ":\n";
 					phrase13 = p3P[i];
 					p3w++;
 					break;
@@ -327,46 +327,46 @@ public class Game {
 			}
 		}
 		else {
-			phrase13 = "It's a draw betwheen Player 1 and Player 3 as both chose " + p1[0].toString();
+			phrase13 = "It's a draw between " + MainActivity.player1Name + " and " + MainActivity.player3Name + " as both chose " + p1[0].toString();
 			draws++;
 		}
 		if (!p2[0].equals(p3[0])) {
 			for (int i = 1; i < p1.length; i++) {
 				if (p2[i].equals(p3[0])) {
-					winner23 = "Player 2 beats player 3: ";
+					winner23 = MainActivity.player2Name + " beats " + MainActivity.player3Name + ":\n";
 					phrase23 = p2P[i];
 					p2w++;
 				}
 				if (p3[i].equals(p2[0])) {
-					winner23 = "Player 3 beats player 2: ";
+					winner23 = MainActivity.player3Name + " beats " + MainActivity.player2Name + ":\n";
 					phrase23 = p3P[i];
 					p3w++;
 				}
 			}
 		}
 		else {
-			phrase23 = "It's a draw betwheen Player 2 and Player 3 as both chose " + p2[0].toString();
+			phrase23 = "It's a draw between " + MainActivity.player2Name + " and " + MainActivity.player3Name + " as both chose " + p2[0].toString();
 			draws++;
 		}
 		return winner12 + phrase12 + "\n" + winner13 + phrase13 + "\n" + winner23 + phrase23;
 	}
 	//Lists containing the signs different strengths.
-	static String[] rockList = {"rock", "lizard", "wizard", "spider-man", "scissors"};
-	static String[] paperList = {"paper", "rock", "spock", "batman", "glock"};
-	static String[] scissorsList = {"scissors", "paper", "lizard", "wizard", "spider-man"};
-	static String[] lizardList = {"lizard", "spock", "batman", "glock", "paper"};
-	static String[] spockList = {"spock", "wizard", "spider-man", "scissors", "rock"};
-	static String[] spidermanList = {"spider-man", "glock", "paper", "lizard", "wizard"};
-	static String[] batmanList = {"batman", "spider-man", "scissors", "rock", "spock"};
-	static String[] wizardList = {"wizard", "batman", "glock", "paper", "lizard"};
-	static String[] glockList = {"glock", "scissors", "rock", "spock", "batman"};
+	static String[] rockList = {"Rock", "Lizard", "Wizard", "Spider-man", "Scissors"};
+	static String[] paperList = {"Paper", "Rock", "Spock", "Batman", "Glock"};
+	static String[] scissorsList = {"Scissors", "Paper", "Lizard", "Wizard", "Spider-man"};
+	static String[] lizardList = {"Lizard", "Spock", "Batman", "Glock", "Paper"};
+	static String[] spockList = {"Spock", "Wizard", "Spider-man", "Scissors", "Rock"};
+	static String[] spidermanList = {"Spider-man", "Glock", "Paper", "Lizard", "Wizard"};
+	static String[] batmanList = {"Batman", "Spider-man", "Scissors", "Rock", "Spock"};
+	static String[] wizardList = {"Wizard", "Batman", "Glock", "Paper", "Lizard"};
+	static String[] glockList = {"Glock", "Scissors", "Rock", "Spock", "Batman"};
 	//Lists containing the phrases for when each sign beats another.
 	static String[] rockPhrase = {" ", "Rock crushes Lizard", "Rock interupts Wizard", "Rock knockes out Spider-Man", "Rock crushes Scissors"};
 	static String[] paperPhrase = {" ", "Paper covers Rock", "Paper disproves Spock", "Paper delays Batman", "Paper jams Glock"};
-	static String[] scissorsPhrase = {" ", "Scissors cut Paper", "Scissors decapitates Lizard", "Scissors cut Wizard", "Scissors cut Spider-Man"};
+	static String[] scissorsPhrase = {" ", "Scissors cut Paper", "Scissors decapitates Lizard", "Scissors cut Wizard's beard off", "Scissors cut Spider-Man's web"};
 	static String[] lizardPhrase = {" ", "Lizard poisons Spock", "Lizard confuses Batman (because he looks like Killer Croc)", "Lizard is too small for Glock", "Lizard eats Paper"};
 	static String[] spockPhrase = {" ", "Spock zaps Wizard", "Spock befuddles Spider-Man", "Spock smashes Scissors", "Spock vaporize Rock"};
-	static String[] spidermanPhrase = {" ", "Spider-Man disarms Glock", "Spider-Man rips Paper", "Spider-Man defeats Lizard", "Spider-Man annoys Wizard"};
+	static String[] spidermanPhrase = {" ", "Spider-Man disarms Glock", "Spider-Man rips Paper", "Spider-Man defeats Lizard (a.k.a. Curt Connors)", "Spider-Man annoys Wizard"};
 	static String[] batmanPhrase = {" ", "Batman scares Spider-Man", "Batman dismantles scissors", "Batman explodes rock", "Batman hangs Spock"};
 	static String[] wizardPhrase = {" ", "Wizard stuns Batman", "Wizard melts Glock", "Wizard burns Paper", "Wizard transform Lizard"};
 	static String[] glockPhrase = {" ", "Glock dents Scissors", "Glock breaks Rock", "Glock shoots Spock", "Glock kills Batman's mom"};

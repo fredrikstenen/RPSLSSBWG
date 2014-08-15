@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ public class ShowResultActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 		setContentView(R.layout.fragment_show_result);
+		setNames();
 		Bundle extras = getIntent().getExtras();
 		int i = extras.getInt("playerOneChoice");
 		int j = extras.getInt("playerTwoChoice");
@@ -47,12 +49,15 @@ public class ShowResultActivity extends ActionBarActivity {
 		Sound.buttonClick(this);
 		Intent intent = new Intent(this, MainActivity.class);
 		Game.resetAll();
+		MainActivity.player1Name = null;
+		MainActivity.player2Name = null;
+		MainActivity.player3Name = null;
 		startActivity(intent);
 	}
 	public void lookForWinner(int k, Game game){
 		if(k==game.getP1W()){
 			Intent intent = new Intent(this, WinnerActivity.class);
-			intent.putExtra("player", "PLAYER ONE\n IS THE WINNER!");
+			intent.putExtra("player", MainActivity.player2Name +"\n IS THE WINNER!");
 			intent.putExtra("p1R", Integer.toString(game.getP1W()));
 			intent.putExtra("draws", Integer.toString(game.getDraws()));
 			intent.putExtra("p2R", Integer.toString(game.getP2W()));
@@ -62,7 +67,7 @@ public class ShowResultActivity extends ActionBarActivity {
 	   	}
 	    else if(k == game.getP2W()){
 	    	Intent intent = new Intent(this, WinnerActivity.class);
-	    	intent.putExtra("player", "PLAYER TWO\n IS THE WINNER!");
+	    	intent.putExtra("player", MainActivity.player2Name + "\n IS THE WINNER!");
 			intent.putExtra("p1R", Integer.toString(game.getP1W()));
 			intent.putExtra("draws", Integer.toString(game.getDraws()));
 			intent.putExtra("p2R", Integer.toString(game.getP2W()));
@@ -70,6 +75,12 @@ public class ShowResultActivity extends ActionBarActivity {
 			startActivity(intent);
 			ShowResultActivity.this.finish();
 	    }
+	}
+	public void setNames(){
+		TextView player1View = (TextView) findViewById(R.id.player1_headline);
+		player1View.setText(MainActivity.player1Name);
+		TextView player2View = (TextView) findViewById(R.id.player2_headline);
+		player2View.setText(MainActivity.player2Name);
 	}
 
 	@Override
